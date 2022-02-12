@@ -1,0 +1,45 @@
+trigger:
+  - main
+
+pool:
+  vmImage: "ubuntu-latest"
+
+variables:
+  - group: prodGatsby
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "16.x"
+    displayName: "Install Node.js"
+
+  - script: |
+      npm install -g gatsby-cli
+    displayName: "Install gatsby-cli"
+
+  - script: |
+      yarn install
+    displayName: "Install dependencies"
+
+  - script: |
+      yarn build
+    env:
+      GATSBY_ENV: $(GATSBY_ENV)
+    displayName: "Gatsby build"
+
+  - task: CopyFiles@2
+    inputs:
+      sourceFolder: "public"
+      contents: "**"
+      targetFolder: "$(Build.ArtifactStagingDirectory)"
+      cleanTargetFolder: true
+    displayName: "Copy built site"
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: "$(Build.ArtifactStagingDirectory)"
+      ArtifactName: "drop"
+      publishLocation: "Container"
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    displayName: "Publish Build Artifacts"

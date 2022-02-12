@@ -3,19 +3,21 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Dialog, Transition } from '@headlessui/react';
 import { XIcon } from '@heroicons/react/outline';
+import { LiveChatWidget } from '@livechat/widget-react';
 
 export default function ContactPopUpModal() {
   const [open, setOpen] = useState(false);
+  const [chat, setChat] = React.useState(false);
 
   const close = () => setOpen(false);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      if (sessionStorage.getItem('hasVisited')) {
+      if (sessionStorage.getItem("hasVisited")) {
         // Do nothing
       } else {
         setOpen(true);
-        sessionStorage.setItem('hasVisited', true);
+        sessionStorage.setItem("hasVisited", true);
       }
     }, 20000);
     return () => clearTimeout(timeout);
@@ -39,6 +41,10 @@ export default function ContactPopUpModal() {
 
   return (
     <>
+      <LiveChatWidget
+        license={process.env.GATSBY_JS_LIVECHAT_ID}
+        visibility={chat ? "maximized" : "minimized"}
+      />
       <Transition.Root show={open} as={Fragment}>
         <Dialog
           as="div"
@@ -104,7 +110,7 @@ export default function ContactPopUpModal() {
                     className="w-full rounded border border-transparent shadow-sm px-4 py-2 text-lg font-medium transition ease-in-out duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-bouquetShades-300 bg-bouquetShades-300 hover:text-bouquetShades-700 hover:bg-bouquetShades-100  text-white sm:w-auto"
                     onClick={() => {
                       close();
-                      window.LC_API.open_chat_window();
+                      setChat(true);
                     }}
                   >
                     {ctaButton}

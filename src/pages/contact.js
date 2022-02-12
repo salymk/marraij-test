@@ -1,7 +1,6 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Seo from 'gatsby-plugin-wpgraphql-seo';
-import LiveChat from 'react-livechat';
 import Layout from '../components/Layout';
 import HeroContact from '../components/heros/HeroContact';
 import ContactPopUpModal from '../components/ContactPopUpModal';
@@ -46,7 +45,6 @@ const Contact = () => {
   return (
     <Layout>
       <Seo post={data.wpPage} />
-      <LiveChat license={parseInt(process.env.GATSBY_JS_LIVECHAT_ID, 10)} />
       <ContactPopUpModal />
       <HeroContact />
     </Layout>
