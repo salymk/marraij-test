@@ -1,0 +1,86 @@
+@import url("https://rsms.me/inter/inter.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hamburger-open span:nth-child(1) {
+  @apply top-2 w-0 left-1/2;
+}
+
+.hamburger-open span:nth-child(2) {
+  @apply rotate-45;
+}
+
+.hamburger-open span:nth-child(3) {
+  @apply -rotate-45;
+}
+
+.hamburger-open span:nth-child(4) {
+  @apply top-2 w-0 left-1/2;
+}
+
+.mobileNav-open {
+  @apply flex;
+}
+
+.active {
+  @apply text-bouquetShades-400;
+}
+
+.mobile-active {
+  @apply text-white bg-bouquetShades-700;
+}
+
+/* What we do services section */
+.service {
+  @apply mt-8 w-full lg:mt-5 xl:mt-8 2xl:mt-10;
+}
+
+.service:first-child {
+  @apply mt-0 w-full;
+}
+
+/* Features Alternating With Icons */
+.feature-alternating {
+  @apply mt-24 lg:mt-32;
+}
+
+.feature-alternating:first-child {
+  @apply mt-0;
+}
+
+/* Testimonial Card */
+.testimonial-footer .gatsby-image-wrapper-constrained {
+  display: block;
+}
+
+/* Service template page */
+/* HeroServices */
+.hero-service-img:last-child {
+  @apply hidden mt-6 sm:block sm:mt-0;
+}
+
+/* Reach UI MenuButton */
+[data-reach-menu-item][data-selected] {
+  @apply text-bouquetShades-500 bg-bouquetTints-300;
+}
+
+.menu-link:first-child {
+  @apply rounded-t-md;
+}
+
+.menu-link:last-child {
+  @apply rounded-b-md;
+}
+
+#gatsby-focus-wrapper
+  > div
+  > main
+  > section
+  > div.mx-auto.max-w-screen-xl
+  > div.flex.flex-col.lg\:flex-row.lg\:gap-x-8.xl\:gap-x-16
+  > div.pt-8.lg\:pt-0.flex-1.order-2.lg\:order-1.lg\:mr-4.xl\:mr-6.flex.flex-col.justify-between.items-start.sm\:items-center.lg\:items-start
+  > div:nth-child(1) {
+  display: none;
+}
