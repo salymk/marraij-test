@@ -1,11 +1,11 @@
-import React from 'react';
-import { useStaticQuery, graphql, Link } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import { v4 as uuidv4 } from 'uuid';
-import { features } from 'process';
-import SectionLabel from '../SectionLabel';
-import ValuesImg from '../../images/values.jpg';
-import HandbookImg from '../../images/handbook.jpg';
+import React from "react";
+import { useStaticQuery, graphql, Link } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { v4 as uuidv4 } from "uuid";
+import { features } from "process";
+import SectionLabel from "../SectionLabel";
+import ValuesImg from "../../images/values.jpg";
+import HandbookImg from "../../images/handbook.jpg";
 
 const FeaturesAlternatingWithIcons = () => {
   const data = useStaticQuery(graphql`
@@ -61,7 +61,7 @@ const FeaturesAlternatingWithIcons = () => {
                 {/* <!-- Feature text with icons --> */}
                 <div
                   className={`col-span-2 ${
-                    feature.offset ? 'lg:order-2' : 'lg:order-1'
+                    feature.offset ? "lg:order-2" : "lg:order-1"
                   }`}
                 >
                   <div className="text-center lg:text-left">
@@ -99,10 +99,10 @@ const FeaturesAlternatingWithIcons = () => {
                 {/* <!-- Feature image --> */}
                 <div
                   className={`flex col-span-1 items-center mt-10 lg:mt-0 ${
-                    feature.offset ? 'lg:order-1' : 'lg:order-2'
+                    feature.offset ? "lg:order-1" : "lg:order-2"
                   }`}
                 >
-                  <div className="relative text-center rounded shadow-xl w-full pt-3/2">
+                  <div className="relative text-center rounded shadow-xl w-full ">
                     <GatsbyImage
                       className="object-cover object-center absolute top-0 left-0 w-full h-full align-middle rounded"
                       image={image}
